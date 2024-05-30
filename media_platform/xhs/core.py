@@ -13,10 +13,12 @@ from proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
 from store import xhs as xhs_store
 from tools import utils
 from var import crawler_type_var
-
+current_dir = os.path.dirname(os.path.abspath(__file__))
+libs_path = os.path.join(current_dir, '..', '..', 'libs', 'stealth.min.js')
+print(libs_path)
 from .client import XiaoHongShuClient
 from .exception import DataFetchError
-from .field import SearchSortType
+from .field import SearchSortType, SearchNoteType
 from .login import XiaoHongShuLogin
 
 
@@ -56,7 +58,7 @@ class XiaoHongShuCrawler(AbstractCrawler):
                 headless=config.HEADLESS
             )
             # stealth.min.js is a js script to prevent the website from detecting the crawler.
-            await self.browser_context.add_init_script(path="libs/stealth.min.js")
+            await self.browser_context.add_init_script(path=libs_path)
             # add a cookie attribute webId to avoid the appearance of a sliding captcha on the webpage
             await self.browser_context.add_cookies([{
                 'name': "webId",
@@ -117,6 +119,7 @@ class XiaoHongShuCrawler(AbstractCrawler):
                         keyword=keyword,
                         page=page,
                         sort=SearchSortType(config.SORT_TYPE) if config.SORT_TYPE != '' else SearchSortType.GENERAL,
+                        note_type=SearchNoteType(config.NOTE_TYPE) if config.NOTE_TYPE != '' else SearchNoteType.ALL,
                     )
                     utils.logger.info(f"[XiaoHongShuCrawler.search] Search notes res:{notes_res}")
                     semaphore = asyncio.Semaphore(config.MAX_CONCURRENCY_NUM)

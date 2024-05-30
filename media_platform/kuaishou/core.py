@@ -7,7 +7,9 @@ from typing import Dict, List, Optional, Tuple
 
 from playwright.async_api import (BrowserContext, BrowserType, Page,
                                   async_playwright)
-
+current_dir = os.path.dirname(os.path.abspath(__file__))
+libs_path = os.path.join(current_dir, '..', '..', 'libs', 'stealth.min.js')
+print(libs_path)
 import config
 from base.base_crawler import AbstractCrawler
 from proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
@@ -56,7 +58,7 @@ class KuaishouCrawler(AbstractCrawler):
                 headless=config.HEADLESS
             )
             # stealth.min.js is a js script to prevent the website from detecting the crawler.
-            await self.browser_context.add_init_script(path="libs/stealth.min.js")
+            await self.browser_context.add_init_script(path=libs_path)
             self.context_page = await self.browser_context.new_page()
             await self.context_page.goto(f"{self.index_url}?isHome=1")
 

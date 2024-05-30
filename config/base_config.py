@@ -3,8 +3,9 @@ PLATFORM = "xhs"
 KEYWORDS = "python,golang"
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
-SORT_TYPE = "popularity_descending"  # 具体值参见media_platform.xxx.field下的枚举值，展示只支持小红书
+SORT_TYPE = "time_descending"  # 具体值参见media_platform.xxx.field下的枚举值，展示只支持小红书
 CRAWLER_TYPE = "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
+NOTE_TYPE = 1
 
 # 是否开启 IP 代理
 ENABLE_IP_PROXY = False
@@ -19,7 +20,7 @@ IP_PROXY_PROVIDER_NAME = "kuaidaili"
 # 设置False会打开一个浏览器
 # 小红书如果一直扫码登录不通过，打开浏览器手动过一下滑动验证码
 # 抖音如果一直提示失败，打开浏览器看下是否扫码登录之后出现了手机号验证，如果出现了手动过一下再试。
-HEADLESS = False
+HEADLESS = True
 
 # 是否保存登录状态
 SAVE_LOGIN_STATE = True
@@ -34,7 +35,7 @@ USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
 START_PAGE = 1
 
 # 爬取视频/帖子的数量控制
-CRAWLER_MAX_NOTES_COUNT = 20
+CRAWLER_MAX_NOTES_COUNT = 2
 
 # 并发爬虫数量控制
 MAX_CONCURRENCY_NUM = 4

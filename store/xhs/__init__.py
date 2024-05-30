@@ -44,6 +44,7 @@ async def update_xhs_note(note_item: Dict):
         "title": note_item.get("title") or note_item.get("desc", "")[:255],
         "desc": note_item.get("desc", ""),
         "video_url": video_url,
+        "video_url_none_sy": '' if note_item.get('type') != 'video' else 'https://sns-video-hw.xhscdn.com/'+note_item.get("video").get('consumer').get('origin_video_key') ,
         "time": note_item.get("time"),
         "last_update_time": note_item.get("last_update_time", 0),
         "user_id": user_info.get("user_id"),

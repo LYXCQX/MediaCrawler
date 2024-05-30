@@ -1,8 +1,11 @@
 import asyncio
 import copy
+import os
 import urllib.parse
 from typing import Any, Callable, Dict, List, Optional
-
+current_dir = os.path.dirname(os.path.abspath(__file__))
+libs_path = os.path.join(current_dir, '..', '..', 'libs', 'douyin.js')
+print(libs_path)
 import execjs
 import httpx
 from playwright.async_api import BrowserContext, Page
@@ -37,7 +40,7 @@ class DOUYINClient(AbstractApiClient):
             return
         headers = headers or self.headers
         local_storage: Dict = await self.playwright_page.evaluate("() => window.localStorage")  # type: ignore
-        douyin_js_obj = execjs.compile(open('libs/douyin.js').read())
+        douyin_js_obj = execjs.compile(open(libs_path).read())
         common_params = {
             "device_platform": "webapp",
             "aid": "6383",
