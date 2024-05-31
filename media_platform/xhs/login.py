@@ -1,6 +1,7 @@
 import asyncio
 import base64
 import functools
+import os
 import sys
 from io import BytesIO
 from typing import Optional
@@ -29,6 +30,7 @@ class XiaoHongShuLogin(AbstractLogin):
         self.login_type = login_type
         self.browser_context = browser_context
         self.context_page = context_page
+        self.user_id: str = ""
         self.login_phone = login_phone
         self.cookie_str = cookie_str
 
@@ -168,7 +170,8 @@ class XiaoHongShuLogin(AbstractLogin):
         # 解码 base64 图片
         img_data = base64.b64decode(base64_qrcode_img.replace('data:image/png;base64,',''))
         img = Image.open(BytesIO(img_data))
-        img.save('/opt/img/login/xhs.png')
+        qr_path =f'/opt/img/login/xhs_{self.user_id}.png'
+        img.save(qr_path)
 
         utils.logger.info(f"[XiaoHongShuLogin.login_by_qrcode] waiting for scan code login, remaining time is 120s")
         try:
@@ -179,6 +182,10 @@ class XiaoHongShuLogin(AbstractLogin):
 
         wait_redirect_seconds = 5
         utils.logger.info(f"[XiaoHongShuLogin.login_by_qrcode] Login successful then wait for {wait_redirect_seconds} seconds redirect ...")
+        try:
+            os.remove(qr_path)
+        except:
+            utils.logger.info(f"删除图片失败")
         await asyncio.sleep(wait_redirect_seconds)
 
     async def login_by_cookies(self):
