@@ -15,7 +15,6 @@ from tools import utils
 from var import crawler_type_var
 current_dir = os.path.dirname(os.path.abspath(__file__))
 libs_path = os.path.join(current_dir, '..', '..', 'libs', 'stealth.min.js')
-print(libs_path)
 from .client import XiaoHongShuClient
 from .exception import DataFetchError
 from .field import SearchSortType, SearchNoteType
