@@ -1,10 +1,14 @@
 import asyncio
+import base64
 import functools
 import sys
+from io import BytesIO
 from typing import Optional
 
 import redis
+from PIL import Image
 from playwright.async_api import BrowserContext, Page
+from qrcode_terminal import qrcode_terminal
 from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
                       wait_fixed)
 
@@ -160,6 +164,18 @@ class XiaoHongShuLogin(AbstractLogin):
         # then current asyncio event loop will not be blocked
         partial_show_qrcode = functools.partial(utils.show_qrcode, base64_qrcode_img)
         asyncio.get_running_loop().run_in_executor(executor=None, func=partial_show_qrcode)
+
+        # 解码 base64 图片
+        img_data = base64.b64decode(base64_qrcode_img.replace('data:image/png;base64,',''))
+        img = Image.open(BytesIO(img_data))
+        import pyzbar.pyzbar as pyzbar
+        # 使用 pyzbar 解码二维码
+        decoded_objects = pyzbar.decode(img)
+        if decoded_objects:
+            qr_data = decoded_objects[0].data.decode('utf-8')
+            qrcode_terminal.draw(qr_data)
+        else:
+            raise ValueError("未找到二维码")
 
         utils.logger.info(f"[XiaoHongShuLogin.login_by_qrcode] waiting for scan code login, remaining time is 120s")
         try:
