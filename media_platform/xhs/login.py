@@ -168,7 +168,7 @@ class XiaoHongShuLogin(AbstractLogin):
         # 解码 base64 图片
         img_data = base64.b64decode(base64_qrcode_img.replace('data:image/png;base64,',''))
         img = Image.open(BytesIO(img_data))
-        img.save('/opt/software/nextcloud/data/leyuan/files/Photos/login/xhs.png')
+        img.save('/opt/software/nextcloud/data/leyuan/files/Photos/xhs/login/xhs.png')
 
         utils.logger.info(f"[XiaoHongShuLogin.login_by_qrcode] waiting for scan code login, remaining time is 120s")
         try:
