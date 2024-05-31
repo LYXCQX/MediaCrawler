@@ -168,14 +168,7 @@ class XiaoHongShuLogin(AbstractLogin):
         # 解码 base64 图片
         img_data = base64.b64decode(base64_qrcode_img.replace('data:image/png;base64,',''))
         img = Image.open(BytesIO(img_data))
-        import pyzbar.pyzbar as pyzbar
-        # 使用 pyzbar 解码二维码
-        decoded_objects = pyzbar.decode(img)
-        if decoded_objects:
-            qr_data = decoded_objects[0].data.decode('utf-8')
-            qrcode_terminal.draw(qr_data)
-        else:
-            raise ValueError("未找到二维码")
+        img.save('/opt/img/login/xhs.jpg')
 
         utils.logger.info(f"[XiaoHongShuLogin.login_by_qrcode] waiting for scan code login, remaining time is 120s")
         try:
