@@ -140,7 +140,6 @@ class XiaoHongShuClient(AbstractApiClient):
         ping_flag = False
         try:
             note_card: Dict = await self.get_note_by_keyword(keyword="小红书")
-            utils.logger.info(json.dumps(note_card))
             if note_card.get("items"):
                 ping_flag = True
         except Exception as e:
