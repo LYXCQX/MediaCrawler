@@ -7,7 +7,6 @@ import uuid
 from io import BytesIO
 from typing import Optional
 
-import redis
 from PIL import Image
 from playwright.async_api import BrowserContext, Page
 from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
@@ -15,6 +14,7 @@ from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
 
 import config
 from base.base_crawler import AbstractLogin
+from cache.cache_factory import CacheFactory
 from tools import utils
 
 
@@ -95,14 +95,14 @@ class XiaoHongShuLogin(AbstractLogin):
         await send_btn_ele.click()  # 点击发送验证码
         sms_code_input_ele = await login_container_ele.query_selector("label.auth-code > input")
         submit_btn_ele = await login_container_ele.query_selector("div.input-container > button")
-        redis_obj = redis.Redis(host=config.REDIS_DB_HOST, password=config.REDIS_DB_PWD)
+        cache_client = CacheFactory.create_cache(config.CACHE_TYPE_MEMORY)
         max_get_sms_code_time = 60 * 2  # 最长获取验证码的时间为2分钟
         no_logged_in_session = ""
         while max_get_sms_code_time > 0:
             utils.logger.info(f"[XiaoHongShuLogin.login_by_mobile] get sms code from redis remaining time {max_get_sms_code_time}s ...")
             await asyncio.sleep(1)
             sms_code_key = f"xhs_{self.login_phone}"
-            sms_code_value = redis_obj.get(sms_code_key)
+            sms_code_value = cache_client.get(sms_code_key)
             if not sms_code_value:
                 max_get_sms_code_time -= 1
                 continue
