@@ -137,15 +137,11 @@ class XiaoHongShuLogin(AbstractLogin):
         utils.logger.info("[XiaoHongShuLogin.login_by_qrcode] Begin login xiaohongshu by qrcode ...")
         # login_selector = "div.login-container > div.left > div.qrcode > img"
         qrcode_img_selector = "xpath=//img[@class='qrcode-img']"
-        # 将截图保存到指定路径
-        await self.context_page.screenshot(path=f'/opt/software/auto_publish_videos/imgs/{uuid.uuid4()}.png')
         # find login qrcode
         base64_qrcode_img = await utils.find_login_qrcode(
             self.context_page,
             selector=qrcode_img_selector
         )
-        # 将截图保存到指定路径
-        await self.context_page.screenshot(path=f'/opt/software/auto_publish_videos/imgs/{uuid.uuid4()}.png')
         if not base64_qrcode_img:
             utils.logger.info("[XiaoHongShuLogin.login_by_qrcode] login failed , have not found qrcode please check ....")
             # if this website does not automatically popup login dialog box, we will manual click login button
