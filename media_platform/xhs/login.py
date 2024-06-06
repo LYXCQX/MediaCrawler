@@ -7,11 +7,9 @@ import uuid
 from io import BytesIO
 from typing import Optional
 
-import pyautogui
 import redis
 from PIL import Image
 from playwright.async_api import BrowserContext, Page
-from qrcode_terminal import qrcode_terminal
 from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
                       wait_fixed)
 
