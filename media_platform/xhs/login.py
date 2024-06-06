@@ -155,9 +155,8 @@ class XiaoHongShuLogin(AbstractLogin):
                 selector=qrcode_img_selector
             )
             if not base64_qrcode_img:
-                screenshot = pyautogui.screenshot()
                 # 将截图保存到指定路径
-                screenshot.save(f'/opt/software/auto_publish_videos/imgs/{uuid.uuid4()}.png')
+                await self.context_page.screenshot(path=f'/opt/software/auto_publish_videos/imgs/{uuid.uuid4()}.png')
                 sys.exit()
 
         # get not logged session
