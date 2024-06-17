@@ -3,7 +3,7 @@ PLATFORM = "xhs"
 KEYWORDS = "python,golang"
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
-SORT_TYPE = "time_descending"  # 具体值参见media_platform.xxx.field下的枚举值，展示只支持小红书
+SORT_TYPE = "general"  # 具体值参见media_platform.xxx.field下的枚举值，展示只支持小红书
 CRAWLER_TYPE = "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
 NOTE_TYPE = 1
 
