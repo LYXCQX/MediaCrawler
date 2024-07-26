@@ -1,9 +1,12 @@
 # 基础配置
 PLATFORM = "xhs"
-KEYWORDS = "python,golang"
+KEYWORDS = "编程副业,编程兼职"
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
-SORT_TYPE = "general"  # 具体值参见media_platform.xxx.field下的枚举值，展示只支持小红书
+# 具体值参见media_platform.xxx.field下的枚举值，暂时只支持小红书
+SORT_TYPE = "general"
+# 具体值参见media_platform.xxx.field下的枚举值，暂时只支持抖音
+PUBLISH_TIME_TYPE = 0
 CRAWLER_TYPE = "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
 NOTE_TYPE = 1
 
@@ -38,7 +41,7 @@ START_PAGE = 1
 CRAWLER_MAX_NOTES_COUNT = 50
 
 # 并发爬虫数量控制
-MAX_CONCURRENCY_NUM = 4
+MAX_CONCURRENCY_NUM = 1
 
 # 是否开启爬图片模式, 默认不开启爬图片
 ENABLE_GET_IMAGES = False
@@ -46,7 +49,7 @@ ENABLE_GET_IMAGES = False
 # 是否开启爬评论模式, 默认不开启爬评论
 ENABLE_GET_COMMENTS = False
 
-# 是否开启爬二级评论模式, 默认不开启爬二级评论, 目前仅支持 xhs
+# 是否开启爬二级评论模式, 默认不开启爬二级评论
 # 老版本项目使用了 db, 则需参考 schema/tables.sql line 287 增加表字段
 ENABLE_GET_SUB_COMMENTS = False
 
@@ -55,6 +58,7 @@ XHS_SPECIFIED_ID_LIST = [
     "6422c2750000000027000d88",
     "64ca1b73000000000b028dd2",
     "630d5b85000000001203ab41",
+    "668fe13000000000030241fa", # 图文混合
     # ........................
 ]
 
@@ -96,3 +100,32 @@ DY_CREATOR_ID_LIST = [
     "MS4wLjABAAAATJPY7LAlaa5X-c8uNdWkvz0jUGgpw4eeXIwu_8BhvqE",
     # ........................
 ]
+
+# 指定bili创作者ID列表(sec_id)
+BILI_CREATOR_ID_LIST = [
+    "20813884",
+    # ........................
+]
+
+# 指定快手创作者ID列表
+KS_CREATOR_ID_LIST = [
+    "3x4sm73aye7jq7i",
+    # ........................
+]
+
+
+#词云相关
+#是否开启生成评论词云图
+ENABLE_GET_WORDCLOUD = False
+# 自定义词语及其分组
+#添加规则：xx:yy 其中xx为自定义添加的词组，yy为将xx该词组分到的组名。
+CUSTOM_WORDS = {
+    '零几': '年份',  # 将“零几”识别为一个整体
+    '高频词': '专业术语'  # 示例自定义词
+}
+
+#停用(禁用)词文件路径
+STOP_WORDS_FILE = "./docs/hit_stopwords.txt"
+
+#中文字体文件路径
+FONT_PATH= "./docs/STZHONGS.TTF"

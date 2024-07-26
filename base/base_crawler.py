@@ -6,10 +6,6 @@ from playwright.async_api import BrowserContext, BrowserType
 
 class AbstractCrawler(ABC):
     @abstractmethod
-    def init_config(self, platform: str, login_type: str, crawler_type: str, start_page: int, keyword: str):
-        pass
-
-    @abstractmethod
     async def start(self):
         pass
 
@@ -52,7 +48,7 @@ class AbstractStore(ABC):
 
     # TODO support all platform
     # only xhs is supported, so @abstractmethod is commented
-    # @abstractmethod
+    @abstractmethod
     async def store_creator(self, creator: Dict):
         pass
 
