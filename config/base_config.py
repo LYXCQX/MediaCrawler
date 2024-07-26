@@ -125,7 +125,7 @@ CUSTOM_WORDS = {
 }
 
 #停用(禁用)词文件路径
-STOP_WORDS_FILE = "./docs/hit_stopwords.txt"
+STOP_WORDS_FILE = "MediaCrawler/docs/hit_stopwords.txt"
 
 #中文字体文件路径
-FONT_PATH= "./docs/STZHONGS.TTF"
+FONT_PATH= "MediaCrawler/docs/STZHONGS.TTF"
