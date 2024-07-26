@@ -47,15 +47,13 @@ async def run_crawler_with_args(platform, lt, type, start, keywords):
     # init db
     if config.SAVE_DATA_OPTION == "db":
         await db.init_db()
-
+    config.PLATFORM = platform
+    config.LOGIN_TYPE = lt
+    config.CRAWLER_TYPE = type
+    config.START_PAGE = start
+    config.KEYWORDS = keywords
     crawler = CrawlerFactory.create_crawler(platform=platform)
-    crawler.init_config(
-        platform=platform,
-        login_type=lt,
-        crawler_type=type,
-        start_page=start,
-        keyword=keywords
-    )
+
     await crawler.start()
 
     if config.SAVE_DATA_OPTION == "db":

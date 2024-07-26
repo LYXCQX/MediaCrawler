@@ -130,7 +130,7 @@ class XiaoHongShuCrawler(AbstractCrawler):
                     note_details = await asyncio.gather(*task_list)
                     for note_detail in note_details:
                         if note_detail:
-                            await xhs_store.update_xhs_note(note_detail)
+                            await xhs_store.update_xhs_note(note_detail,keyword)
                             await self.get_notice_media(note_detail)
                             note_id_list.append(note_detail.get("note_id"))
                     page += 1

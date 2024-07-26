@@ -45,7 +45,7 @@ def get_video_url_arr(note_item: Dict) -> List:
     return videoArr
 
 
-async def update_xhs_note(note_item: Dict):
+async def update_xhs_note(note_item: Dict,keyword):
     note_id = note_item.get("note_id")
     user_info = note_item.get("user", {})
     interact_info = note_item.get("interact_info", {})
@@ -78,6 +78,7 @@ async def update_xhs_note(note_item: Dict):
         "image_list": ','.join([img.get('url', '') for img in image_list]),
         "tag_list": ','.join([tag.get('name', '') for tag in tag_list if tag.get('type') == 'topic']),
         "last_modify_ts": utils.get_current_timestamp(),
+        "key_word": keyword,
         "note_url": f"https://www.xiaohongshu.com/explore/{note_id}"
     }
     utils.logger.info(f"[store.xhs.update_xhs_note] xhs note: {local_db_item}")
