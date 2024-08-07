@@ -79,7 +79,7 @@ async def update_xhs_note(note_item: Dict,keyword):
         "tag_list": ','.join([tag.get('name', '') for tag in tag_list if tag.get('type') == 'topic']),
         "last_modify_ts": utils.get_current_timestamp(),
         "key_word": keyword,
-        "note_url": f"https://www.xiaohongshu.com/explore/{note_id}"
+        "note_url": f"https://www.xiaohongshu.com/explore/{note_id}?xsec_token={note_item.get('xsec_token')}&xsec_source=pc_search",
     }
     utils.logger.info(f"[store.xhs.update_xhs_note] xhs note: {local_db_item}")
     await XhsStoreFactory.create_store().store_content(local_db_item)
