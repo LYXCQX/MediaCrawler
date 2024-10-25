@@ -112,11 +112,11 @@ class DouYinLogin(AbstractLogin):
         except Exception as e:
             utils.logger.error(f"[DouYinLogin.popup_login_dialog] login dialog box does not pop up automatically, error: {e}")
             utils.logger.info("[DouYinLogin.popup_login_dialog] login dialog box does not pop up automatically, we will manually click the login button")
-            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.UUID}')
+            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.uuid4()}.png')
             login_button_ele = self.context_page.locator("xpath=//p[text() = '登录']")
             await login_button_ele.click()
             await asyncio.sleep(0.5)
-            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.UUID}')
+            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.uuid4()}.png')
 
     async def login_by_qrcode(self):
         utils.logger.info("[DouYinLogin.login_by_qrcode] Begin login douyin by qrcode...")
@@ -128,7 +128,7 @@ class DouYinLogin(AbstractLogin):
         if not base64_qrcode_img:
             utils.logger.info("[DouYinLogin.login_by_qrcode] login qrcode not found please confirm ...")
             sys.exit()
-        qr_path =f'/opt/img/login/dy_{uuid.UUID}.png'
+        qr_path =f'/opt/img/login/dy_{uuid.uuid4()}.png'
         # 去掉前缀
         base64_data = base64_qrcode_img.split(",")[1]
         # 解码base64数据
