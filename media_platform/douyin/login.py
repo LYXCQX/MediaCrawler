@@ -112,9 +112,11 @@ class DouYinLogin(AbstractLogin):
         except Exception as e:
             utils.logger.error(f"[DouYinLogin.popup_login_dialog] login dialog box does not pop up automatically, error: {e}")
             utils.logger.info("[DouYinLogin.popup_login_dialog] login dialog box does not pop up automatically, we will manually click the login button")
+            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.UUID}')
             login_button_ele = self.context_page.locator("xpath=//p[text() = '登录']")
             await login_button_ele.click()
             await asyncio.sleep(0.5)
+            await self.context_page.screenshot(path=f'/opt/img/login/err_{uuid.UUID}')
 
     async def login_by_qrcode(self):
         utils.logger.info("[DouYinLogin.login_by_qrcode] Begin login douyin by qrcode...")
