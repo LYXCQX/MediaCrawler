@@ -176,3 +176,6 @@ STOP_WORDS_FILE = "./docs/hit_stopwords.txt"
 
 # 中文字体文件路径
 FONT_PATH = "./docs/STZHONGS.TTF"
+
+GLOBAL_DRAINAGE_MESSAGE = '你好，注安高精准资料免费领取，这上边限制，发不了，需要加微 viex   w635 7128 42'
+DY_DRAINAGE_MESSAGE = ''
