@@ -81,7 +81,9 @@ class DouYinCrawler(AbstractCrawler):
             elif config.CRAWLER_TYPE == "creator":
                 # Get the information and comments of the specified creator
                 await self.get_creators_and_videos()
-
+            elif config.CRAWLER_TYPE == "search，creator":
+                await self.search()
+                await self.get_creators_and_videos()
             utils.logger.info("[DouYinCrawler.start] Douyin Crawler finished ...")
 
     async def search(self) -> None:

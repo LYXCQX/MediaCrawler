@@ -10,15 +10,15 @@
 
 
 # 基础配置
-PLATFORM = "xhs"
-KEYWORDS = "编程副业,编程兼职" # 关键词搜索配置，以英文逗号分隔
+PLATFORM = "dy"
+KEYWORDS = "注安,注册安全工程师" # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
 # 具体值参见media_platform.xxx.field下的枚举值，暂时只支持小红书
-SORT_TYPE = "popularity_descending"
+SORT_TYPE = "LATEST"
 # 具体值参见media_platform.xxx.field下的枚举值，暂时只支持抖音
-PUBLISH_TIME_TYPE = 0
-CRAWLER_TYPE = "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
+PUBLISH_TIME_TYPE = 7
+CRAWLER_TYPE = "search，creator"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
 
 # 是否开启 IP 代理
 ENABLE_IP_PROXY = False
@@ -33,13 +33,13 @@ IP_PROXY_PROVIDER_NAME = "kuaidaili"
 # 设置False会打开一个浏览器
 # 小红书如果一直扫码登录不通过，打开浏览器手动过一下滑动验证码
 # 抖音如果一直提示失败，打开浏览器看下是否扫码登录之后出现了手机号验证，如果出现了手动过一下再试。
-HEADLESS = False
+HEADLESS = True
 
 # 是否保存登录状态
 SAVE_LOGIN_STATE = True
 
 # 数据保存类型选项配置,支持三种类型：csv、db、json, 最好保存到DB，有排重的功能。
-SAVE_DATA_OPTION = "json"  # csv or db or json
+SAVE_DATA_OPTION = "db"  # csv or db or json
 
 # 用户浏览器缓存的浏览器文件配置
 USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
@@ -48,7 +48,7 @@ USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
 START_PAGE = 1
 
 # 爬取视频/帖子的数量控制
-CRAWLER_MAX_NOTES_COUNT = 200
+CRAWLER_MAX_NOTES_COUNT = 10
 
 # 并发爬虫数量控制
 MAX_CONCURRENCY_NUM = 1
@@ -66,7 +66,7 @@ CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 10
 
 # 是否开启爬二级评论模式, 默认不开启爬二级评论
 # 老版本项目使用了 db, 则需参考 schema/tables.sql line 287 增加表字段
-ENABLE_GET_SUB_COMMENTS = False
+ENABLE_GET_SUB_COMMENTS = True
 
 # 已废弃⚠️⚠️⚠️指定小红书需要爬虫的笔记ID列表
 # 已废弃⚠️⚠️⚠️ 指定笔记ID笔记列表会因为缺少xsec_token和xsec_source参数导致爬取失败
@@ -84,8 +84,8 @@ XHS_SPECIFIED_NOTE_URL_LIST = [
 
 # 指定抖音需要爬取的ID列表
 DY_SPECIFIED_ID_LIST = [
-    "7280854932641664319",
-    "7202432992642387233"
+    # "1335086299",
+    # "7202432992642387233"
     # ........................
 ]
 
@@ -138,7 +138,7 @@ XHS_CREATOR_ID_LIST = [
 
 # 指定Dy创作者ID列表(sec_id)
 DY_CREATOR_ID_LIST = [
-    "MS4wLjABAAAATJPY7LAlaa5X-c8uNdWkvz0jUGgpw4eeXIwu_8BhvqE",
+    "MS4wLjABAAAACUONjm8fgQHZb8Hfg41Ur8rSk6XlSSOKI4pbYJ5aHcNPSZZ1B7Gk1JQ1PDMwgQxS",
     # ........................
 ]
 
