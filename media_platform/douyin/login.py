@@ -10,10 +10,14 @@
 
 
 import asyncio
+import base64
 import functools
 import sys
+import uuid
+from io import BytesIO
 from typing import Optional
 
+from PIL import Image
 from playwright.async_api import BrowserContext, Page
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
@@ -122,7 +126,14 @@ class DouYinLogin(AbstractLogin):
         if not base64_qrcode_img:
             utils.logger.info("[DouYinLogin.login_by_qrcode] login qrcode not found please confirm ...")
             sys.exit()
-
+        qr_path =f'/opt/img/login/dy_{uuid.UUID}.png'
+        # 去掉前缀
+        base64_data = base64_qrcode_img.split(",")[1]
+        # 解码base64数据
+        img_data = base64.b64decode(base64_data)
+        # 使用PIL保存图片
+        img = Image.open(BytesIO(img_data))
+        img.save(qr_path)
         partial_show_qrcode = functools.partial(utils.show_qrcode, base64_qrcode_img)
         asyncio.get_running_loop().run_in_executor(executor=None, func=partial_show_qrcode)
         await asyncio.sleep(2)
