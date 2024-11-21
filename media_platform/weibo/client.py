@@ -25,8 +25,8 @@ import httpx
 from httpx import Response
 from playwright.async_api import BrowserContext, Page
 
-import config
-from tools import utils
+from ... import config
+from MediaCrawler.tools import utils
 
 from .exception import DataFetchError
 from .field import SearchType

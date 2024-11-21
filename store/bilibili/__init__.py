@@ -16,7 +16,7 @@
 
 from typing import List
 
-import config
+from ... import config
 from var import source_keyword_var
 
 from .bilibili_store_impl import *

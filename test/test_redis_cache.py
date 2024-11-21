@@ -18,7 +18,7 @@
 import time
 import unittest
 
-from cache.redis_cache import RedisCache
+from MediaCrawler.cache.redis_cache import RedisCache
 
 
 class TestRedisCache(unittest.TestCase):

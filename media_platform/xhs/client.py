@@ -19,9 +19,9 @@ import httpx
 from playwright.async_api import BrowserContext, Page
 from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_result
 
-import config
-from base.base_crawler import AbstractApiClient
-from tools import utils
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractApiClient
+from MediaCrawler.tools import utils
 from html import unescape
 
 from .exception import DataFetchError, IPBlockError

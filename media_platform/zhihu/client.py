@@ -20,11 +20,11 @@ from httpx import Response
 from playwright.async_api import BrowserContext, Page
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-import config
-from base.base_crawler import AbstractApiClient
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractApiClient
 from constant import zhihu as zhihu_constant
 from model.m_zhihu import ZhihuComment, ZhihuContent, ZhihuCreator
-from tools import utils
+from MediaCrawler.tools import utils
 
 from .exception import DataFetchError, ForbiddenError
 from .field import SearchSort, SearchTime, SearchType

@@ -16,10 +16,10 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 
-import config
-from cache.abs_cache import AbstractCache
-from cache.cache_factory import CacheFactory
-from tools import utils
+from ... import config
+from MediaCrawler.cache.abs_cache import AbstractCache
+from MediaCrawler.cache.cache_factory import CacheFactory
+from MediaCrawler.tools import utils
 
 app = FastAPI()
 

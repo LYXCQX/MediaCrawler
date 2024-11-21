@@ -20,7 +20,7 @@ from typing import Any, List
 
 from redis import Redis
 
-from cache.abs_cache import AbstractCache
+from MediaCrawler.cache.abs_cache import AbstractCache
 from config import db_config
 
 

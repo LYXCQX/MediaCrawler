@@ -19,7 +19,7 @@ from parsel import Selector
 
 from constant import zhihu as zhihu_constant
 from model.m_zhihu import ZhihuComment, ZhihuContent, ZhihuCreator
-from tools.crawler_util import extract_text_from_html
+from MediaCrawler.tools.crawler_util import extract_text_from_html
 
 ZHIHU_SGIN_JS = None
 

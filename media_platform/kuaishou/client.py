@@ -18,12 +18,12 @@ from urllib.parse import urlencode
 import httpx
 from playwright.async_api import BrowserContext, Page
 
-import config
-from base.base_crawler import AbstractApiClient
-from tools import utils
+from ... import config
 
 from .exception import DataFetchError
 from .graphql import KuaiShouGraphQL
+from MediaCrawler.base.base_crawler import AbstractApiClient
+from ...tools import utils
 
 
 class KuaiShouClient(AbstractApiClient):
@@ -54,7 +54,10 @@ class KuaiShouClient(AbstractApiClient):
         if data.get("errors"):
             raise DataFetchError(data.get("errors", "unkonw error"))
         else:
-            return data.get("data", {})
+            if url.startswith('https://www.kuaishou.com/graphql'):
+                return data.get("data", {})
+            else:
+                return data
 
     async def get(self, uri: str, params=None) -> Dict:
         final_uri = uri

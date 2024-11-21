@@ -18,11 +18,11 @@ import httpx
 from playwright.async_api import BrowserContext
 from tenacity import RetryError, retry, stop_after_attempt, wait_fixed
 
-import config
-from base.base_crawler import AbstractApiClient
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractApiClient
 from model.m_baidu_tieba import TiebaComment, TiebaCreator, TiebaNote
-from proxy.proxy_ip_pool import ProxyIpPool
-from tools import utils
+from MediaCrawler.proxy.proxy_ip_pool import ProxyIpPool
+from MediaCrawler.tools import utils
 
 from .field import SearchNoteType, SearchSortType
 from .help import TieBaExtractor

@@ -19,9 +19,9 @@ from urllib.parse import urlencode
 
 import httpx
 
-from proxy import IpCache, IpGetError, ProxyProvider
-from proxy.types import IpInfoModel
-from tools import utils
+from MediaCrawler.proxy import IpCache, IpGetError, ProxyProvider
+from MediaCrawler.proxy.types import IpInfoModel
+from MediaCrawler.tools import utils
 
 
 class JiSuHttpProxy(ProxyProvider):

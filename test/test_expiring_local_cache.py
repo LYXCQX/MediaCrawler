@@ -18,7 +18,7 @@
 import time
 import unittest
 
-from cache.local_cache import ExpiringLocalCache
+from MediaCrawler.cache.local_cache import ExpiringLocalCache
 
 
 class TestExpiringLocalCache(unittest.TestCase):

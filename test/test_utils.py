@@ -11,7 +11,7 @@
 
 # -*- coding: utf-8 -*-
 
-from tools import utils
+from MediaCrawler.tools import utils
 
 
 def test_convert_cookies():

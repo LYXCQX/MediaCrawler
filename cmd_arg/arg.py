@@ -11,8 +11,8 @@
 
 import argparse
 
-import config
-from tools.utils import str2bool
+from ... import config
+from MediaCrawler.tools.utils import str2bool
 
 
 async def parse_cmd():

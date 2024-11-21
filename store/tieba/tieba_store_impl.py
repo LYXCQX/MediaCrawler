@@ -19,9 +19,9 @@ from typing import Dict
 
 import aiofiles
 
-import config
-from base.base_crawler import AbstractStore
-from tools import utils, words
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractStore
+from MediaCrawler.tools import utils, words
 from var import crawler_type_var
 
 

@@ -12,13 +12,13 @@
 # -*- coding: utf-8 -*-
 from typing import List
 
-import config
-from base.base_crawler import AbstractStore
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractStore
 from model.m_zhihu import ZhihuComment, ZhihuContent, ZhihuCreator
 from store.zhihu.zhihu_store_impl import (ZhihuCsvStoreImplement,
                                           ZhihuDbStoreImplement,
                                           ZhihuJsonStoreImplement)
-from tools import utils
+from MediaCrawler.tools import utils
 from var import source_keyword_var
 
 

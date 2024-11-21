@@ -19,9 +19,9 @@ from playwright.async_api import BrowserContext, Page
 from tenacity import (RetryError, retry, retry_if_result, stop_after_attempt,
                       wait_fixed)
 
-import config
-from base.base_crawler import AbstractLogin
-from tools import utils
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractLogin
+from MediaCrawler.tools import utils
 
 
 class ZhiHuLogin(AbstractLogin):

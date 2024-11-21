@@ -15,8 +15,8 @@
 # @Desc    :
 from unittest import IsolatedAsyncioTestCase
 
-from proxy.proxy_ip_pool import create_ip_pool
-from proxy.types import IpInfoModel
+from MediaCrawler.proxy.proxy_ip_pool import create_ip_pool
+from MediaCrawler.proxy.types import IpInfoModel
 
 
 class TestIpPool(IsolatedAsyncioTestCase):

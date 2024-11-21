@@ -4,13 +4,13 @@ import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from playwright.async_api import async_playwright
 
-import config
+from ... import config
 import db
 from main import CrawlerFactory
 from media_platform.douyin.login import DouYinLogin
-from proxy import IpInfoModel
-from proxy.proxy_ip_pool import create_ip_pool
-from tools import utils
+from MediaCrawler.proxy import IpInfoModel
+from MediaCrawler.proxy.proxy_ip_pool import create_ip_pool
+from MediaCrawler.tools import utils
 from var import crawler_type_var
 
 

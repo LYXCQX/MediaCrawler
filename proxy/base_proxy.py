@@ -18,12 +18,12 @@ import json
 from abc import ABC, abstractmethod
 from typing import List
 
-import config
-from cache.abs_cache import AbstractCache
-from cache.cache_factory import CacheFactory
-from tools.utils import utils
+from MediaCrawler.cache.abs_cache import AbstractCache
+from MediaCrawler.cache.cache_factory import CacheFactory
+from MediaCrawler.tools.utils import utils
 
 from .types import IpInfoModel
+from ... import config
 
 
 class IpGetError(Exception):

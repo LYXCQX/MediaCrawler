@@ -18,8 +18,8 @@ from typing import Any, Callable, Dict, Optional
 import requests
 from playwright.async_api import BrowserContext
 
-from base.base_crawler import AbstractApiClient
-from tools import utils
+from MediaCrawler.base.base_crawler import AbstractApiClient
+from MediaCrawler.tools import utils
 from var import request_keyword_var
 
 from .exception import *

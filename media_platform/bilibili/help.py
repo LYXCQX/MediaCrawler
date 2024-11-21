@@ -18,7 +18,7 @@ import urllib.parse
 from hashlib import md5
 from typing import Dict
 
-from tools import utils
+from MediaCrawler.tools import utils
 
 
 class BilibiliSign:

@@ -19,12 +19,12 @@ from typing import Dict, List, Optional, Tuple
 from playwright.async_api import (BrowserContext, BrowserType, Page,
                                   async_playwright)
 
-import config
-from base.base_crawler import AbstractCrawler
-from proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
-from store import kuaishou as kuaishou_store
-from tools import utils
-from var import comment_tasks_var, crawler_type_var, source_keyword_var
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractCrawler
+from MediaCrawler.proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
+from MediaCrawler.store import kuaishou as kuaishou_store
+from MediaCrawler.tools import utils
+from MediaCrawler.var import comment_tasks_var, crawler_type_var, source_keyword_var
 
 from .client import KuaiShouClient
 from .exception import DataFetchError

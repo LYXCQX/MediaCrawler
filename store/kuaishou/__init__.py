@@ -15,10 +15,10 @@
 # @Desc    :
 from typing import List
 
-import config
-from var import source_keyword_var
 
 from .kuaishou_store_impl import *
+from ...base.base_crawler import AbstractStore
+from ...var import source_keyword_var
 
 
 class KuaishouStoreFactory:

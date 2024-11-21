@@ -19,13 +19,13 @@ from playwright.async_api import (BrowserContext, BrowserType, Page,
                                   async_playwright)
 from tenacity import RetryError
 
-import config
-from base.base_crawler import AbstractCrawler
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractCrawler
 from config import CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES
 from model.m_xiaohongshu import NoteUrlInfo
-from proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
+from MediaCrawler.proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
 from store import xhs as xhs_store
-from tools import utils
+from MediaCrawler.tools import utils
 from var import crawler_type_var, source_keyword_var
 
 from .client import XiaoHongShuClient

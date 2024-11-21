@@ -20,9 +20,9 @@ from typing import Dict, List
 import httpx
 from pydantic import BaseModel, Field
 
-from proxy import IpCache, IpInfoModel, ProxyProvider
-from proxy.types import ProviderNameEnum
-from tools import utils
+from MediaCrawler.proxy import IpCache, IpInfoModel, ProxyProvider
+from MediaCrawler.proxy.types import ProviderNameEnum
+from MediaCrawler.tools import utils
 
 
 class KuaidailiProxyModel(BaseModel):

@@ -20,9 +20,9 @@ from urllib.parse import urlparse
 import aiofiles
 import aiomysql
 
-import config
+from ... import config
 from async_db import AsyncMysqlDB
-from tools import utils
+from MediaCrawler.tools import utils
 from var import db_conn_pool_var, media_crawler_db_var
 
 

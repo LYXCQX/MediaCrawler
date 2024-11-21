@@ -24,11 +24,11 @@ from typing import Dict, List, Optional, Tuple
 from playwright.async_api import (BrowserContext, BrowserType, Page,
                                   async_playwright)
 
-import config
-from base.base_crawler import AbstractCrawler
-from proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractCrawler
+from MediaCrawler.proxy.proxy_ip_pool import IpInfoModel, create_ip_pool
 from store import weibo as weibo_store
-from tools import utils
+from MediaCrawler.tools import utils
 from var import crawler_type_var, source_keyword_var
 
 from .client import WeiboClient

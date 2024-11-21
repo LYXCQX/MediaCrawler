@@ -5,7 +5,7 @@ from typing import List, Dict
 
 from playwright.async_api import async_playwright
 
-import config
+from ... import config
 from async_db import AsyncMysqlDB
 from db import init_db
 from var import media_crawler_db_var

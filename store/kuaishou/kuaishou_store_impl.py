@@ -22,10 +22,10 @@ from typing import Dict
 
 import aiofiles
 
-import config
-from base.base_crawler import AbstractStore
-from tools import utils, words
-from var import crawler_type_var
+from ... import config
+from MediaCrawler.base.base_crawler import AbstractStore
+from MediaCrawler.tools import utils, words
+from MediaCrawler.var import crawler_type_var
 
 
 def calculate_number_of_files(file_store_path: str) -> int:

@@ -13,9 +13,9 @@ import asyncio
 import sys
 
 import cmd_arg
-import config
 import db
-from base.base_crawler import AbstractCrawler
+from MediaCrawler import config
+from MediaCrawler.base.base_crawler import AbstractCrawler
 from media_platform.bilibili import BilibiliCrawler
 from media_platform.douyin import DouYinCrawler
 from media_platform.kuaishou import KuaishouCrawler

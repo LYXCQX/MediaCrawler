@@ -16,7 +16,7 @@ import time
 import urllib.parse
 
 from model.m_xiaohongshu import NoteUrlInfo
-from tools.crawler_util import extract_url_params_to_dict
+from MediaCrawler.tools.crawler_util import extract_url_params_to_dict
 
 
 def sign(a1="", b1="", x_s="", x_t=""):
